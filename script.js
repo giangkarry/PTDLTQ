@@ -9,14 +9,14 @@ var map = new wemapgl.WeMap({
 	reverse: "false",
 });
 
-let popup = new wemapgl.Popup({ closeButton: false, closeOnClick: false });
+let popup = new wemapgl.Popup({ closeButton: false, closeOnClick: false }); /*add province name when moce cursor into it*/
 
 map.on("load", function () {
 	map.addSource("data", {
 		type: "geojson",
 		data: "http://127.0.0.1:8080/Downloads/data.geojson",
 	});
-
+	/*add layer in map*/
 	map.addLayer({
 		id: "state-fills",
 		type: "fill",
@@ -26,12 +26,12 @@ map.on("load", function () {
 			"fill-color": {
 				property: "id",
 				stops: [
-					[-5, "#FF6600"],
+					[-5, "#FFCC66"],
 					[-4, "#42f5cb"],
 					[-3, "#a5ff7d"],
 					[-2, "#3399FF"],
-					[-1, "#ffca7a"],
-					[0, "#ffccd4"],
+					[-1, "#FF6666"],
+					[1, "#ffccd4"],
 				],
 			},
 			"fill-opacity": [
