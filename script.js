@@ -26,12 +26,12 @@ map.on("load", function () {
 			"fill-color": {
 				property: "id",
 				stops: [
-					[-5, "#CC0000"],
+					[-5, "#FF6600"],
 					[-4, "#42f5cb"],
 					[-3, "#a5ff7d"],
-					[-2, "#fcf988"],
+					[-2, "#3399FF"],
 					[-1, "#ffca7a"],
-					[0, "#CC99CC"],
+					[0, "#ffccd4"],
 				],
 			},
 			"fill-opacity": [
@@ -107,9 +107,8 @@ function parseTabContent(data) {
 
 	for (let i = 0; i < keys.length; i++) {
 		let p = data[keys[i]];
-		content += `<h5>${keys[i]}</h5><p>${
-			typeof p === "object" ? parseTabContent(p) : p
-		}</p>`;
+		content += `<h5>${keys[i]}</h5><p>${typeof p === "object" ? parseTabContent(p) : p
+			}</p>`;
 	}
 
 	content += "</div>";
