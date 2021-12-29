@@ -1,111 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>PTDLTQ</title>
 
-		<script src="src/wemap-gl.js" type="text/javascript"></script>
-		<link href="src/wemap.min.css" rel="stylesheet" />
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>PTDLTQ</title>
 
-		<script src="src/bootstrap.min.js" type="text/javascript"></script>
-		<link href="src/bootstrap.min.css" rel="stylesheet" />
+	<script src="src/wemap-gl.js" type="text/javascript"></script>
+	<link href="src/wemap.min.css" rel="stylesheet" />
 
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-			}
+	<script src="src/bootstrap.min.js" type="text/javascript"></script>
+	<link href="src/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="src/css.css">
+	<!-- Boxiocns CDN Link -->
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-			#map {
-				position: absolute;
-				top: 0;
-				bottom: 0;
-				width: 100%;
-			}
-		</style>
-	</head>
 
-	<body>
-		<div id="map"></div>
-		<div
-			class="modal fade"
-			id="informationModal"
-			tabindex="-1"
-			aria-labelledby="informationModalLabel"
-			aria-hidden="true"
-		>
-			<div class="modal-dialog modal-dialog-scrollable modal-xl">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="informationModalLabel">
-							Thông tin tỉnh
-						</h5>
-						<button
-							type="button"
-							class="btn-close"
-							data-bs-dismiss="modal"
-							aria-label="Close"
-						></button>
-					</div>
-					<div class="modal-body">
-						<ul
-							class="nav nav-pills nav-fill"
-							id="pills-tab"
-							role="tablist"
-						></ul>
-						<br />
-						<div class="tab-content" id="pills-tabContent"></div>
-					</div>
-					<div class="modal-footer">
-						<button
-							type="button"
-							class="btn btn-primary"
-							data-bs-dismiss="modal"
-						>
-							Đóng
-						</button>
-					</div>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		#map {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="map"></div>
+	<div class="modal fade" id="informationModal" tabindex="-1" aria-labelledby="informationModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrollable modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="informationModalLabel">
+						Thông tin tỉnh
+					</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist"></ul>
+					<br />
+					<div class="tab-content" id="pills-tabContent"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+						Đóng
+					</button>
 				</div>
 			</div>
 		</div>
-		<div
-			class="modal fade"
-			id="alertModal"
-			tabindex="-1"
-			aria-labelledby="alertModalLabel"
-			aria-hidden="true"
-		>
-			<div class="modal-dialog modal-dialog-scrollable">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="alertModalLabel">
-							Thông tin tỉnh
-						</h5>
-						<button
-							type="button"
-							class="btn-close"
-							data-bs-dismiss="modal"
-							aria-label="Close"
-						></button>
-					</div>
-					<div class="modal-body">
-						Thông tin này chưa được cập nhật.
-					</div>
-					<div class="modal-footer">
-						<button
-							type="button"
-							class="btn btn-primary"
-							data-bs-dismiss="modal"
-						>
-							Đóng
-						</button>
-					</div>
+	</div>
+	<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="alertModalLabel">
+						Thông tin tỉnh
+					</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					Thông tin này chưa được cập nhật.
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+						Đóng
+					</button>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<!--SIDEBAR-->
+	<div class="sidebar close">
+		<div style="font-family:verdana; color: aliceblue;text-align: center;"><strong>Sóc Trăng</strong></div>
+		<ul class="nav-links">
+			<li>
+				<a href="#">
+					<i class='bx bx-grid-alt'></i>
+				</a>
+				<ul class="sub-menu">
+					<li><a class="link_name" href="#">Vị trí địa lý - địa hình</a></li>
+					<li><a href="#">Vị trí chiến lược</a></li>
+					<li><a href="#">Địa hình, Địa chất</a></li>
+				</ul>
+			</li>
+			<li>
+				<div class="iocn-link">
+					<a href="#">
+						<i class='bx bxs-area'></i>
+					</a>
+					<i class='bx bxs-chevron-down arrow'></i>
+				</div>
+				<ul class="sub-menu">
+					<li><a class="link_name" href="#">Diện tích</a></li>
+					<li><a href="#">Diện tích toàn tỉnh/thành phố</a></li>
+					<li><a href="#">Diện tích đất công nghiệp, thương mại, dịch vụ</a></li>
+					<li><a href="#">Diện tích đất nông, lâm, ngư nghiệp</a></li>
+				</ul>
+			</li>
+			<li>
+				<div class="iocn-link">
+					<a href="#">
+						<i class='bx bx-wind'></i>
+					</a>
+				</div>
+				<ul class="sub-menu">
+					<li><a class="link_name" href="#">Khí hậu</a></li>
+				</ul>
+			</li>
+
+			<li>
+				<a href="#">
+					<i class='bx bx-pie-chart-alt-2'></i>
+				</a>
+				<ul class="sub-menu blank">
+					<li><a class="link_name" href="#">Tình hình kinh tế</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bx-line-chart'></i>
+
+				</a>
+				<ul class="sub-menu blank">
+					<li><a class="link_name" href="#">Cơ sở hạ tầng</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bx-body'></i>
+
+				</a>
+				<ul class="sub-menu blank">
+					<li><a class="link_name" href="#">Nguồn nhân lực</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-book'></i>
+
+				</a>
+				<ul class="sub-menu blank">
+					<li><a class="link_name" href="#">Hệ thống giáo dục, đào tạo</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bx-support'></i>
+
+				</a>
+				<ul class="sub-menu blank">
+					<li><a class="link_name" href="#">Dịch vụ hỗ trợ</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-wallet-alt'></i>
+
+				</a>
+				<ul class="sub-menu blank">
+					<li><a class="link_name" href="#">Định hướng thu hút đầu tư</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-wallet'></i>
+
+				</a>
+				<ul class="sub-menu blank">
+					<li><a class="link_name" href="#">Chính sách ưu đãi, hỗ trợ đầu tư</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-file-doc'></i>
+
+				</a>
+				<ul class="sub-menu blank">
+					<li><a class="link_name" href="#">Thủ tục đầu tư</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bx-money'></i>
+
+				</a>
+				<ul class="sub-menu blank">
+					<li><a class="link_name" href="#">Chi phí đầu tư tham khảo</a></li>
+				</ul>
+			</li>
+		</ul>
 
 		<script src="script.js"></script>
-	</body>
+		<link rel="stylesheet" href="demo.css">
+</body>
+
 </html>
